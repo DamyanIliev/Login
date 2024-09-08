@@ -1,12 +1,33 @@
-import { useState } from 'react'
+import { useSelector } from "react-redux";
+import {Outlet, Navigate, Route, Routes, useLocation, Router} from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  function URLSwitch(){
+    const {account} = useSelector((state)=>state.account)
+    const location = useLocation()
+
+    return account.email ? (
+      <Outlet/>
+    ):(
+      <Navigate to ="/login" state={{from: location}} replace/>
+    );
+  }
 
   return (
-    <div className='bg-orange-500 h-screen w-screen'>
-     <h1 className='text-blue-700 font-bold first-letter:text-green-700 text-3xl'>App</h1>
-    </div>
+    <>
+     <Router>
+      <Routes>
+        <Route element = {URLSwitch}>
+          <Route path="/" element={Home}/>
+        </Route>
+        <Route path="/login" element={Login}/>
+        <Route path="/register" element={Register}/>
+      </Routes>
+     </Router>
+    </>
   )
 }
 
