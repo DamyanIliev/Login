@@ -31,8 +31,7 @@ export const login = async (req, res) =>{
         try{ 
             const foundUser = await Account.findOne({email})
             if (foundUser){
-                const checkPassword = compareString(password, foundUser.password)
-                console.log(checkPassword);
+                const checkPassword = await compareString(password, foundUser.password)
                 if(checkPassword){
                     res.status(200).json({ status: "success", message: "Login Succesful!", foundUser})
                 }else{
