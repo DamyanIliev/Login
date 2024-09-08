@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import {Outlet, Navigate, Route, Routes, useLocation, Router} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Home from "./pages/Home"
 
 function App() {
 
@@ -17,17 +18,13 @@ function App() {
   }
 
   return (
-    <>
-     <Router>
       <Routes>
         <Route element = {URLSwitch}>
-          <Route path="/" element={Home}/>
+          <Route path="/" element={<Home/>}/>
         </Route>
-        <Route path="/login" element={Login}/>
-        <Route path="/register" element={Register}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
-     </Router>
-    </>
   )
 }
 

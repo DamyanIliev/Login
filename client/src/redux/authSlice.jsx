@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    account: JSON.parse(window.localStorage.getItem("account") ?? {}),
+    account: JSON.parse(window.localStorage.getItem("account")) || {},
     edit:false
 }
 
 export const authSlice = createSlice({
-    name: authSlice,
+    name: "auth",
     initialState,
     reducers:{
         login: (state, action) => {
