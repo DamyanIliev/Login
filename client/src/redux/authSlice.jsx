@@ -15,7 +15,7 @@ export const authSlice = createSlice({
             localStorage.setItem("account", JSON.stringify(action.payload));
         },
         logout: (state) => {
-            state.account = null;
+            state.account = {};
             localStorage.removeItem("account");
         },
         updateProfile: (state, action) => {
@@ -26,12 +26,16 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-export function AccountLogin(dispatch,getState){
-    dispatch(authSlice.actions.login)
+export function AccountLogin(account){
+    return (dispatch, getState) => {
+        dispatch(authSlice.actions.login(account));
+      };
 }
 
-export function AccountLogout(dispatch,getState){
-    dispatch(authSlice.actions.logout)
+export function AccountLogout(){
+    return (dispatch, getState) => {
+        dispatch(authSlice.actions.logout());
+      };
 }
 
 export function UpdateAccount(dispatch,getState){

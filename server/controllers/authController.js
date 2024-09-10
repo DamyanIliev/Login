@@ -15,6 +15,7 @@ export const register = async (req, res) =>{
             const account = await Account.create({
                 name, email, password:hashPassword,
             });
+            return res.status(200).json({ status: "success",message:"Your account has been created succesfully!"});
         }catch{
             console.log(error);
             res.status(500).json({ message: "An error occurred while registering user." });
