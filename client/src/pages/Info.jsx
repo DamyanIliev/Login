@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import Menu from '../components/menu';
 
 function Info() {
 
@@ -8,7 +9,8 @@ function Info() {
 
   return (
     <div>
-      IF you see this page You are in Your account!
+      <Menu/>
+      <h1 className='flex justify-center text-5xl'>IF you see this page You are in Your account!</h1>
       <br/>
       <div>{account.name}</div>
       <br/>
